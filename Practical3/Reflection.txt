@@ -1,0 +1,5 @@
+In this practical, we tried out a few features provided by Git and GitHub. That's very interesting.
+
+I observed that mathematical functions are not supported by GitHub MarkDown.
+
+I think it would be a good idea to teach us not only the usage of GUI Git tools, but also the commandline interfaces. The reason is that there may not be a available GUI tool when you're operating a remote computer via ssh and it would be a waste of time to manipulate the code locally and then push it to the working computer. 
