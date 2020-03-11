@@ -1,5 +1,5 @@
 # What does this piece of code do?
-# Answer: 
+# Answer: Get prime numbers in [1,100]
 
 # Import libraries
 # randint allows drawing a random number, 
@@ -14,6 +14,7 @@ p=False
 while p==False:
     p=True
     n = randint(1,100)
+    #u=ceil(sqrt(n))
     u = ceil(n**(0.5))
     for i in range(2,u+1):
         if n%i == 0:
@@ -22,3 +23,6 @@ while p==False:
 
      
 print(n)
+#Output number n which cannot be divided by any number less than sqrt(n).
+
+#Hypotheses: Get prime numbers in [1,100]
