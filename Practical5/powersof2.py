@@ -1,6 +1,7 @@
 #!/bin/env python
 # Get a number
-x=2019
+#x=2019
+x=int(input("Write number below 2^14 here:"))
 o=str(x)+" is "
 # Calculate from 2^13
 n=13

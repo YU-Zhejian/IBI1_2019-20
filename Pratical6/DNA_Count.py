@@ -1,12 +1,13 @@
 #!/bin/env python
 #Get data
 import matplotlib.pyplot as plt
-dna="ATGCTTCAGAAAGGTCTTACG"
+#dna="ATGCTTCAGAAAGGTCTTACG"
+dna=input("Write sequence here:")
 dna_dict={'A':0,'T':0,'C':0,'G':0}
 
 #Add to dictionary
-for n in range(0,len(dna)):
-    dna_dict[dna[n:n+1]]=dna_dict[dna[n:n+1]]+1
+for n in dna:
+    dna_dict[n]=dna_dict[n]+1
 
 #Enumerate dictionary
 for dna_key in dna_dict:

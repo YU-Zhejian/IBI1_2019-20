@@ -1,6 +1,7 @@
 #!/bin/env pthon
 # Start with an int.
-n=1234
+#n=1234
+n=int(input("Write starting number here:"))
 print(str(n))
 #Loop until n=1
 while (n!=1):
