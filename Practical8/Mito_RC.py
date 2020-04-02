@@ -26,15 +26,7 @@ for seq in out_seq:
     if re.search(r'^>.*',seq):
         rc=seq
     else:
-        for seq_chr in seq_rev:
-            if seq_chr=='A':
-                rc = rc + 'T'
-            elif seq_chr=='T':
-                rc = rc + 'A'
-            elif seq_chr=='C':
-                rc = rc + 'G'
-            else:
-                rc = rc+ 'C'
+        rc=seq_rev.translate(str.maketrans("AGCT","TCGA"))
         rc=rc+'\n'
     out_rc.append(rc)
 
