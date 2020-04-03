@@ -1,36 +1,15 @@
 #!/bin/env python
 import re
-outfasta=input("Type the name of new FASTA here:>")
+
 myfasta=open("Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa","r")
-record=False
-out_seq = []
-out_seq_tmp = ""
-for seq in myfasta:
-    if re.search(r'^>.*',seq):
-        if out_seq_tmp != '':
-            out_seq.append(out_seq_tmp)
-            out_seq_tmp=""
-        if re.search(r'^>.*_mRNA cdna chromosome:R64-1-1:Mito.*',seq):
-            record=True
-            out_seq.append(seq)
-        else:
-            record=False
-    elif record:
-        out_seq_tmp=out_seq_tmp+seq.strip()
+M_seq=re.findall(r'(>.*?:Mito:.*[AGCT\n]+?)>',myfasta.read())
 myfasta.close()
 
-out_rc = []
-for seq in out_seq:
-    seq_rev=seq[::-1]
-    rc=''
-    if re.search(r'^>.*',seq):
-        rc=seq
-    else:
-        rc=seq_rev.translate(str.maketrans("AGCT","TCGA"))
-        rc=rc+'\n'
-    out_rc.append(rc)
-
-outfasta=open(outfasta,"w")
-for seq in out_rc:
-    outfasta.write(seq)
+out_seq=[]
+outfasta=open(input("Type the name of new FASTA here:>"),"w")
+for seq in M_seq:
+    seq=seq.replace('\n','')
+    seq=re.sub(r'>[^AGCT].*]',"> "+re.findall(r'gene:Q[\d]*',seq)[0]+" gene_length:"+str(seq.count("A")+seq.count("G")+seq.count("C")+seq.count("T"))+"\n",seq)+"\n"
+    rev_str=re.findall(r'([AGCT]+)',seq)[0][::-1].translate(str.maketrans("AGCT","TCGA"))
+    outfasta.write(re.sub(r'([AGCT]+)',rev_str,seq))
 outfasta.close()

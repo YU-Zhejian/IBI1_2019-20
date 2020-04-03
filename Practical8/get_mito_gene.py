@@ -1,25 +1,12 @@
 #!/bin/env python
 import re
 myfasta=open("Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa","r")
-record=False
-out_seq = []
-out_seq_tmp = ""
-for seq in myfasta:
-    if re.search(r'^>.*',seq):
-        if out_seq_tmp != '':
-            out_seq_tmp=out_seq_tmp+"\n"
-            out_seq.append(out_seq_tmp)
-            out_seq_tmp=""
-        if re.search(r'^>.*_mRNA cdna chromosome:R64-1-1:Mito.*',seq):
-            record=True
-            out_seq.append(seq)
-        else:
-            record=False
-    elif record:
-        out_seq_tmp=out_seq_tmp+seq.strip()
+M_seq=re.findall(r'(>.*?:Mito:.*[AGCT\n]+?)>',myfasta.read())
 myfasta.close()
 
+out_seq=[]
 outfasta=open("mito_gene.fa","w")
-for seq in out_seq:
-    outfasta.write(seq)
+for seq in M_seq:
+    seq=seq.replace('\n','')
+    outfasta.write(re.sub(r'>[^AGCT].*]',"> "+re.findall(r'gene:Q[\d]*',seq)[0]+" gene_length:"+str(seq.count("A")+seq.count("G")+seq.count("C")+seq.count("T"))+"\n",seq)+"\n")
 outfasta.close()
