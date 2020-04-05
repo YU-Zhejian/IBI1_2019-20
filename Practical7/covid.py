@@ -26,9 +26,9 @@ world_new_cases=covid_data.iloc[country_Bool,2]
 print(np.mean(world_new_cases))
 print(np.median(world_new_cases))
 plt.plot(world_dates, world_new_cases, 'r+')
-#plt.show()
+plt.show()
 plt.boxplot(world_new_cases)
-#plt.show()
+plt.show()
 
 S_Bool=[]
 for country in all_countries:
