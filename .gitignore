@@ -1,3 +1,5 @@
 *.fa.gz
 *.fa
 .idea
+*.pdf
+tmp.py
