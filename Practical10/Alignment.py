@@ -41,7 +41,7 @@ for seq2_ss in seq2.readlines():
     else:
         seq2_name=seq2_ss[1:].strip()
 # Alignment
-edit_distance=0
+percentage=0
 score=0
 seqdiff=""
 for i in range(len(seq1_all)):
@@ -51,6 +51,7 @@ for i in range(len(seq1_all)):
     score+=this_score
     if (seq1_all[i] == seq2_all[i]):
         seqdiff+=seq1_all[i]
+        percentage=percentage+1
     elif this_score>=0:
         seqdiff+="+"
     else:
@@ -65,4 +66,4 @@ seq2_name=trimstr(seq2_name,lt)
 print(seq1_name+"/"+seq1_ss.strip())
 print(seqdiff_name+"/"+seqdiff)
 print(seq2_name+"/"+seq2_ss.strip())
-print("Score: "+str(score))
+print("Score: "+str(score)+" with percentage "+str(round(percentage/len(seq1_all)*100,2))+"%")
