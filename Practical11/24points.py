@@ -19,12 +19,9 @@ def select_replicate():
 # List all possible situations
 def select_calc(l: int):
     return_list = []
-    il = list(range(l))
-    for i in il:
-        jl = il.copy()
-        jl.pop(i)
-        for j in jl:
-            for k in range(4):
+    for i in list(range(l-1)):
+        for j in list(range(i+1,l)):
+            for k in range(6):
                 return_list.append([i, j, k])
     return (return_list)
 
@@ -60,9 +57,14 @@ def select_apply(i:int, j:int, k:int, l:list):
     elif (k == 1):
         out = l[i] - l[j]
     elif (k == 2):
+        out = l[j] - l[i]
+    elif (k == 3):
         out = l[i] * l[j]
-    else:
-        out = l[i] / l[j]
+    elif (l[j] != 0):
+        if (k==4):
+            out = l[i] / l[j]
+        else:
+            out = l[j] / l[i]
     if (out == 24):
         return (0)
     else:
