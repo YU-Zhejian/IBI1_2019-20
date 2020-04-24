@@ -10,17 +10,11 @@ for item in num:
         print("Invalid number " + str(item) + ", which should have been between integers 1 to 23.")
         sys.exit(1)
 
-
-# Replicate
-def select_replicate():
-    return ()
-
-
 # List all possible situations
 def select_calc(l: int):
     return_list = []
-    for i in list(range(l-1)):
-        for j in list(range(i+1,l)):
+    for i in list(range(l - 1)):
+        for j in list(range(i + 1, l)):
             for k in range(6):
                 return_list.append([i, j, k])
     return (return_list)
@@ -40,6 +34,7 @@ for i in range(len(num)):
 # Select one operation [] from one stage.
 
 def select_copy(l: list):
+    global all_sit
     l_copy = l.copy()
     if len(l_copy) == len(sci) - 1:
         all_sit.append(l_copy)
@@ -48,11 +43,13 @@ def select_copy(l: list):
         select_copy(l)
         l.pop()
 
+
 select_copy([])
 
+
 # Apply
-def select_apply(i:int, j:int, k:int, l:list):
-    if (k == 0):
+def select_apply(i: int, j: int, k: int, l: list):
+    if k == 0:
         out = l[i] + l[j]
     elif (k == 1):
         out = l[i] - l[j]
@@ -61,7 +58,7 @@ def select_apply(i:int, j:int, k:int, l:list):
     elif (k == 3):
         out = l[i] * l[j]
     elif (l[j] != 0):
-        if (k==4):
+        if (k == 4):
             out = l[i] / l[j]
         else:
             out = l[j] / l[i]
@@ -75,7 +72,7 @@ def select_apply(i:int, j:int, k:int, l:list):
 
 n = 1
 for item in all_sit:
-    num_copy=num.copy()
+    num_copy = num.copy()
     for jtem in item:
         if (select_apply(jtem[0], jtem[1], jtem[2], num_copy) == 0):
             print("Yes")
