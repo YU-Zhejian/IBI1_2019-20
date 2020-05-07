@@ -1,0 +1,2 @@
+This practical is relatively easy because there're too much hint.
+I learned some new functions and how to find documentations for function I'm not familiar with.
