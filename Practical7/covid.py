@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-os.chdir("D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical7\\")
+#os.chdir("D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical7\\")
 covid_data = pd.read_csv("full_data.csv")
 # Print all colums and every third row between (and including) 0 and 15
 print(covid_data.iloc[0:16:3,:])
