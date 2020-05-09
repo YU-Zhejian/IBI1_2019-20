@@ -2,7 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
-plt . figure(figsize=(12,8),dpi =150)
+plt . figure(figsize=(6,4),dpi =150)
 N=10000
 beta=0.3
 gamma=0.05
@@ -29,6 +29,6 @@ for percent in range(0,100,10):
         i.append(I)
         r.append(R)
     plt.plot(list(range(time+1)), i, color=cm.viridis(percent*4),label=str(percent)+'%')
-legend = plt.legend(loc='upper right', shadow=True, fontsize='x-large')
+legend = plt.legend(loc='upper right', shadow=True)
 plt.savefig("SIR_vaccination",type='png')
 plt.close()
