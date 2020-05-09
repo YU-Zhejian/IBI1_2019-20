@@ -1,4 +1,4 @@
-#!/bin/env pthon
+#!/usr/bin/env python
 # Start with an int.
 #n=1234
 n=int(input("Write starting number here:"))

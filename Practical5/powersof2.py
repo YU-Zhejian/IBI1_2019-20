@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 # Get a number
 #x=2019
 x=int(input("Write number below 2^14 here:"))

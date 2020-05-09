@@ -1,4 +1,4 @@
-#!/usr/env python
+#!/usr/bin/env python
 import sys
 import math
 raw_str = input(r"Please input numbers to compute 24: (use ',' to divide them)")

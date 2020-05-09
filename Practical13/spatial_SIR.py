@@ -5,9 +5,6 @@ size_x = 100
 time=100
 beta=0.3
 gamma=0.05
-
-
-
 population = np.zeros((size_x, size_x))
 outbreak = np.random.choice(range(100), 2)
 #0=S 1=I 2=R
@@ -16,7 +13,6 @@ PP=[population]
 plt.figure(figsize =(12 ,8) , dpi =150)
 plt.imshow ( population , cmap='viridis',interpolation= 'nearest')
 plt.show()
-
 for ttmp in range(time):
     infectedIndex = np.where(population == 1)
     for i in range(len(infectedIndex[0])):

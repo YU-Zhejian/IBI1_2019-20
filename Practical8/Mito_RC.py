@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 import re
 import os
 os.chdir("D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical8")
