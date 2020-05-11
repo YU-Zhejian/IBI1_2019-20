@@ -1,14 +1,17 @@
 #!/usr/bin/env python
-import sys
-import math
+from math import factorial
+from tqdm import tqdm
 raw_str = input(r"Please input numbers to compute 24: (use ',' to divide them)")
 num = []
 for item in raw_str.split(","):
-    num.append(float(item))
-for item in num:
-    if ((item > 23) or (item < 1)):
+    try:
+        fi=float(item)
+    except:
+        exit(1)
+    if ((fi > 23) or (fi < 1)):
         print("Invalid number " + str(item) + ", which should have been between integers 1 to 23.")
-        sys.exit(1)
+        exit(1)
+    num.append(fi)
 # List all possible situations
 def select_calc(l: int) -> list:
     '''
@@ -61,25 +64,31 @@ def select_copy(l: list):
     :param l: a list of all operation steps.
     :return: NONE
     '''
-    global all_sit
     global n
+    global pbar
     l_copy = l.copy()
     if len(l_copy) == len(sci) - 1:
         num_copy = num.copy()
         for jtem in l_copy:
             if (select_apply(jtem[0], jtem[1], jtem[2], num_copy) == 0):
-                print("Yes")
-                l=len(num)
-                print("Recursion Times: " + str(n)+"/"+str((4**(l-1))*math.factorial(l)*(math.factorial(l-1))))
-                sys.exit(0)
+                return 1
             else:
                 n = n + 1
+                pbar.update(1)
     for item in sci[len(l)]:
         l.append(item)
-        select_copy(l)
+        if 1==select_copy(l):
+            return 1
         l.pop()
 # Apply
-n=1
-select_copy([])
-print("No")
-sys.exit(1)
+l=len(num)
+el=3**(l-1)*(l-1)*factorial(l)*factorial(l-1)
+n=0
+with tqdm(total=el) as pbar:
+    if 1==select_copy([]):
+        pbar.close()
+        print("Yes")
+    else:
+        pbar.close()
+        print("No")
+print("Recursion Times:"+str(n)+"/"+str(el))

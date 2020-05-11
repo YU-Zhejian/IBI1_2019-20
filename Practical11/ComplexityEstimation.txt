@@ -2,6 +2,6 @@ This algorithm is designed to list all possible formulars and work on these form
 
 Firstly, each step can be represented by a list of three elements: the index of operating number 1 in the number list, the index of operating number 1 and the index of operator (+,_,*,\). Then, all these possible steps are listed and calulated.
 
-There are (n-1) times of operations, wo there are 4^(n-1) possibilities. So, the total will be (4^(n-1))*(n!)*((n-1)!) possibilities.
+There are (n-1) times of operations, wo there are 4^(n-1) possibilities. So, the total will be (3^(n-1))*((l-1))*(n!)*((n-1)!) possibilities.
 
-O(n)=(4^n)*(n!)^2
+O(n)=(3^n)*(n!)^2
