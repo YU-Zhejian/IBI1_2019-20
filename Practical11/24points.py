@@ -47,48 +47,51 @@ def select_apply(i: int, j: int, k: int, l: list):
         if(l[j] != 0):
             out = l[i] / l[j]
         else:
-            return (1)
+            return 2
     else:
         if l[i] != 0:
             out = l[j] / l[i]
         else:
-            return(1)
+            return 2
     if (out == 24):
-        return (0)
+        return 0
     else:
         l[i] = out
         l.pop(j)
-        return (1)
+        return 1
 def select_copy(l: list):
     '''
     :param l: a list of all operation steps.
     :return: NONE
     '''
-    global n
     global pbar
     l_copy = l.copy()
     if len(l_copy) == len(sci) - 1:
         num_copy = num.copy()
         for jtem in l_copy:
-            if (select_apply(jtem[0], jtem[1], jtem[2], num_copy) == 0):
+            sa=select_apply(jtem[0], jtem[1], jtem[2], num_copy)
+            if sa==0:
                 return 1
+            elif sa==2:
+                return 2
             else:
-                n = n + 1
                 pbar.update(1)
     for item in sci[len(l)]:
         l.append(item)
-        if 1==select_copy(l):
-            return 1
+        sc_ret=select_copy(l)
+        if 1==sc_ret:
+            return sc_ret
         l.pop()
 # Apply
 l=len(num)
 el=3**(l-1)*(l-1)*factorial(l)*factorial(l-1)
-n=0
 with tqdm(total=el) as pbar:
-    if 1==select_copy([]):
-        pbar.close()
+    sc_ret = select_copy([])
+    rect=pbar.format_dict['n']
+    pbar.close()
+    del pbar
+    if 1==sc_ret:
         print("Yes")
     else:
-        pbar.close()
         print("No")
-print("Recursion Times:"+str(n)+"/"+str(el))
+print("Recursion Times:"+str(rect)+"/"+str(el))
