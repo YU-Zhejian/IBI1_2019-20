@@ -1,0 +1,2 @@
+Reflection
+In this course, I've learned the basic operation iof GNU/Linux, how to use Git GUI together with GitHub and the basis of Python.
