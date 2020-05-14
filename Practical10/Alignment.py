@@ -8,8 +8,8 @@ def getlargest(num1,num2):
 def trimstr(str1,num1):
     return(" "*getlargest(num1-len(str1),0)+str1)
 # Main
-import os
-os.chdir("D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical10")
+#import os
+#os.chdir("D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical10")
 # BLOSUM file retrived from https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt
 blos=open("BLOSUM62.txt","r")
 blos_all=blos.readlines()

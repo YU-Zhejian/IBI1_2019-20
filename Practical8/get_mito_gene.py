@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import re
-import os
-os.chdir("D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical8")
+#import os
+#os.chdir("D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical8")
 myfasta=open("Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa","r")
 ALL_seq=re.findall(r'(>.*?:Mito:.*[AGCT\n]+?)>',myfasta.read())
 myfasta.close()

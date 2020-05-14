@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 from xml.dom import minidom
-import os
+#import os
 from typing import List
 import pandas
-os.chdir('D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical14')
+#os.chdir('D:\\Smst2\\IBI1B\\IBI1_2019-20\\Practical14')
 DT=minidom.parse('go_obo.xml')
 root = DT.documentElement
 terms = root.getElementsByTagName("term")
