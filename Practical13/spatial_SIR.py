@@ -25,3 +25,4 @@ for ttmp in range(time):
         population[x, y] = np.random.choice((1,2), 1, p=[1-gamma,gamma])[0]
     plt.imshow(population, cmap='viridis', interpolation='nearest')
     plt.show()
+    plt.close()
